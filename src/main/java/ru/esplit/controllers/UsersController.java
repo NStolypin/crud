@@ -26,12 +26,12 @@ public class UsersController {
     @GetMapping()
     public String findAll(Model model) {
         model.addAttribute("users", userService.findAll());
-        return "persons/getall";
+        return "users/getall";
     }
 
     @GetMapping("/new")
     public String newPerson(@ModelAttribute("user") User user) {
-        return "persons/new";
+        return "users/new";
     }
 
     @PostMapping("/new")
@@ -43,13 +43,13 @@ public class UsersController {
     @GetMapping("/{id}")
     public String findOne(@PathVariable("id") long id, Model model) {
         model.addAttribute("user", userService.findOne(id));
-        return "persons/read";
+        return "users/read";
     }
 
     @GetMapping("/{id}/edit")
     public String editPerson(@PathVariable("id") long id, Model model) {
         model.addAttribute("user", userService.findOne(id));
-        return "persons/edit";
+        return "users/edit";
     }
 
     @PostMapping("/{id}/edit")
