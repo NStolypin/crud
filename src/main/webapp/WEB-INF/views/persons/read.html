@@ -7,13 +7,15 @@
 </head>
 
 <body>
-    <p th:text="${user.getName()}">name</p>
-    <p th:text="${user.getEmail()}">name</p>
-    <p th:text="${user.getId()}">name</p>
-    <a th:href="@{/users/{id}/edit(id=${user.getId()})}">Edit</a>
-    <form th:method="POST" th:action="@{/users/{id}/delete(id=${user.getId()})}">
-        <input type="submit" value="Delete" />
-    </form>
+    <div th:if="${!user.isEpty()}">
+        <p th:text="${user.get().getName()}">name</p>
+        <p th:text="${user.get().getEmail()}">name</p>
+        <p th:text="${user.get().getId()}">name</p>
+        <a th:href="@{/users/{id}/edit(id=${user.get().getId()})}">Edit</a>
+        <form th:method="POST" th:action="@{/users/{id}/delete(id=${user.get().getId()})}">
+            <input type="submit" value="Delete" />
+        </form>
+    </div>
 </body>
 
 </html>

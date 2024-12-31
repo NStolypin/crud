@@ -1,15 +1,16 @@
 package ru.esplit.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import ru.esplit.models.User;
 
 public interface UserService {
-    List<User> getAll();
+    List<User> findAll();
 
-    void create(User user);
+    void save(User user);
 
-    User read(long id);
+    Optional<User> findOne(long id);
 
     void update(long id, User updatedUser);
 

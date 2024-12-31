@@ -24,8 +24,8 @@ public class UsersController {
     }
 
     @GetMapping()
-    public String getAll(Model model) {
-        model.addAttribute("users", userService.getAll());
+    public String findAll(Model model) {
+        model.addAttribute("users", userService.findAll());
         return "persons/getall";
     }
 
@@ -36,19 +36,19 @@ public class UsersController {
 
     @PostMapping("/new")
     public String create(@ModelAttribute("user") User user) {
-        userService.create(user);
+        userService.save(user);
         return "redirect:/users";
     }
 
     @GetMapping("/{id}")
-    public String read(@PathVariable("id") long id, Model model) {
-        model.addAttribute("user", userService.read(id));
+    public String findOne(@PathVariable("id") long id, Model model) {
+        model.addAttribute("user", userService.findOne(id));
         return "persons/read";
     }
 
     @GetMapping("/{id}/edit")
     public String editPerson(@PathVariable("id") long id, Model model) {
-        model.addAttribute("user", userService.read(id));
+        model.addAttribute("user", userService.findOne(id));
         return "persons/edit";
     }
 
